@@ -12,6 +12,9 @@ public class Produit {
     private String pro_listeingredient;
     private int pro_conditionnement;
     private int pro_certification;
+
+
+    private int pro_additif;
     private int pro_origineingredient;
     private int pro_lieuxfabrication;
     private String pro_codeemballage;
@@ -19,7 +22,7 @@ public class Produit {
 
 
     //constructeur
-    public Produit(int pro_id, String pro_libelle, int pro_quantite, int pro_marque, int pro_categ, int pro_magasin, int pro_paysvente, String pro_listeingredient, int pro_conditionnement, int pro_certification, int pro_origineingredient, int pro_lieuxfabrication, String pro_codeemballage, String pro_lienpageweb) {
+    public Produit(int pro_id, String pro_libelle, int pro_quantite, int pro_additif, int pro_marque, int pro_categ, int pro_magasin, int pro_paysvente, String pro_listeingredient, int pro_conditionnement, int pro_certification, int pro_origineingredient, int pro_lieuxfabrication, String pro_codeemballage, String pro_lienpageweb) {
         this.pro_id = pro_id;
         this.pro_libelle = pro_libelle;
         this.pro_quantite = pro_quantite;
@@ -34,6 +37,7 @@ public class Produit {
         this.pro_lieuxfabrication = pro_lieuxfabrication;
         this.pro_codeemballage = pro_codeemballage;
         this.pro_lienpageweb = pro_lienpageweb;
+        this.pro_additif = pro_additif;
     }
 
     //getters et setters
@@ -150,5 +154,12 @@ public class Produit {
         this.pro_lienpageweb = pro_lienpageweb;
     }
 
+    public int getPro_additif() {
+        return pro_additif;
+    }
+
+    public void setPro_additif(int pro_additif) {
+        this.pro_additif = pro_additif;
+    }
 
 }
