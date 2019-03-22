@@ -11,8 +11,8 @@ import java.util.Date;
 public class MagasinManager {
 
     private static final String TABLE_NAME = "magasin";
-    public static final String KEY_ID_MAGASIN="cat_id";
-    public static final String KEY_LIBELLE_MAGASIN="cat_libelle";
+    public static final String KEY_ID_MAGASIN="mag_id";
+    public static final String KEY_LIBELLE_MAGASIN="mag_libelle";
 
     public static final String CREATE_TABLE_MAGASIN = "CREATE TABLE"+TABLE_NAME+
             " (" +

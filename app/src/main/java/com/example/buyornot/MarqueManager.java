@@ -12,8 +12,8 @@ public class MarqueManager {
 
 
     private static final String TABLE_NAME = "marque";
-    public static final String KEY_ID_MARQUE="cat_id";
-    public static final String KEY_LIBELLE_MARQUE="cat_libelle";
+    public static final String KEY_ID_MARQUE="mar_id";
+    public static final String KEY_LIBELLE_MARQUE="mar_libelle";
 
     public static final String CREATE_TABLE_MARQUE = "CREATE TABLE"+TABLE_NAME+
             " (" +
