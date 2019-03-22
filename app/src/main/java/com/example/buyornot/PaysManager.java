@@ -5,26 +5,28 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.sql.SQLData;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ConditionnementManager {
+public class PaysManager {
 
-    private static final String TABLE_NAME = "conditionnement";
-    public static final String KEY_ID_CONDITIONNEMENT="cat_id";
-    public static final String KEY_LIBELLE_CONDITIONNEMENT="cat_libelle";
 
-    public static final String CREATE_TABLE_CONDITIONNEMENT = "CREATE TABLE"+TABLE_NAME+
+
+
+    private static final String TABLE_NAME = "pays";
+    public static final String KEY_ID_PAYS="pay_id";
+    public static final String KEY_LIBELLE_PAYS="pay_libelle";
+
+    public static final String CREATE_TABLE_PAYS = "CREATE TABLE"+TABLE_NAME+
             " (" +
-            " "+KEY_ID_CONDITIONNEMENT+" INTEGER primary key AUTOINCREMENT," +
-            " "+KEY_LIBELLE_CONDITIONNEMENT+" TEXT"+
+            " "+KEY_ID_PAYS+" INTEGER primary key AUTOINCREMENT," +
+            " "+KEY_LIBELLE_PAYS+" TEXT"+
             ");";
     private MySQLite maBaseSQLite;
     private SQLiteDatabase db;
 
     // Constructeur
-    public ConditionnementManager(Context context)
+    public PaysManager(Context context)
     {
         maBaseSQLite = MySQLite.getInstance(context);
     }
@@ -42,34 +44,34 @@ public class ConditionnementManager {
 
     }
 
-    public long addConditionnement(Conditionnement conditionnement) {
+    public long addPays(Pays magasin) {
         // Ajout d'un enregistrement dans la table
 
         ContentValues values = new ContentValues();
-        values.put(KEY_LIBELLE_CONDITIONNEMENT, conditionnement.getCon_id());
+        values.put(KEY_LIBELLE_PAYS, magasin.getPay_id());
 
 
         // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
         return db.insert(TABLE_NAME, null, values);
     }
 
-    public int modConditionnement(Conditionnement conditionnement) {
+    public int modPays(Pays magasin) {
         // modification d'un enregistrement
         // valeur de retour : (int) nombre de lignes affectées par la requête
 
         ContentValues values = new ContentValues();
-        values.put(KEY_LIBELLE_CONDITIONNEMENT, conditionnement.getCon_id());
-        String where = KEY_ID_CONDITIONNEMENT+" = ?";
-        String[] whereArgs = {conditionnement.getCon_id()+""};
+        values.put(KEY_LIBELLE_PAYS, magasin.getPay_id());
+        String where = KEY_ID_PAYS+" = ?";
+        String[] whereArgs = {magasin.getPay_id()+""};
 
         return db.update(TABLE_NAME, values, where, whereArgs);         }
 
-    public int supConditionnement(Conditionnement conditionnement) {
+    public int supPays(Pays magasin) {
         // suppression d'un enregistrement
         // valeur de retour :(int) nombre de lignes affectées par la clause WHERE, 0 sinon
 
-        String where = KEY_ID_CONDITIONNEMENT+" = ?";
-        String[] whereArgs = {conditionnement.getCon_id()+""};
+        String where = KEY_ID_PAYS+" = ?";
+        String[] whereArgs = {magasin.getPay_id()+""};
 
         return db.delete(TABLE_NAME, where, whereArgs);
     }
@@ -88,25 +90,24 @@ public class ConditionnementManager {
         return dateString;
     }
 
-    public Conditionnement getConditionnement(int id) {
-        // Retourne l'conditionnement dont l'id est passé en paramètre
+    public Pays getPays(int id) {
+        // Retourne l'magasin dont l'id est passé en paramètre
 
-        Conditionnement p = new Conditionnement(1, "sucre");
+        Pays p = new Pays(1, "sucre");
 
-        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID_CONDITIONNEMENT + "=" + id, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID_PAYS + "=" + id, null);
 
         if (c.moveToFirst()) {
-            p.setCon_id(c.getInt(c.getColumnIndex(KEY_ID_CONDITIONNEMENT)));
-            p.setCon_libelle(c.getString(c.getColumnIndex(KEY_LIBELLE_CONDITIONNEMENT)));
+            p.setPay_id(c.getInt(c.getColumnIndex(KEY_ID_PAYS)));
+            p.setPay_libelle(c.getString(c.getColumnIndex(KEY_LIBELLE_PAYS)));
             c.close();
         }
         return p;
     }
 
-    public Cursor getConditionnement() {
+    public Cursor getPays() {
         // sélection de tous les enregistrements de la table
         return db.rawQuery("SELECT * FROM "+TABLE_NAME, null);
     }
-
 
 }
