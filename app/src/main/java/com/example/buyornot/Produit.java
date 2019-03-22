@@ -13,6 +13,9 @@ public class Produit {
     private int pro_conditionnement;
     private int pro_certification;
 
+    private int pro_nova;
+    private int pro_nutriNova;
+
 
     private int pro_additif;
     private int pro_origineingredient;
@@ -22,7 +25,7 @@ public class Produit {
 
 
     //constructeur
-    public Produit(int pro_id, String pro_libelle, int pro_quantite, int pro_additif, int pro_marque, int pro_categ, int pro_magasin, int pro_paysvente, String pro_listeingredient, int pro_conditionnement, int pro_certification, int pro_origineingredient, int pro_lieuxfabrication, String pro_codeemballage, String pro_lienpageweb) {
+    public Produit(int pro_id, String pro_libelle, int pro_quantite, int pro_nova, int pro_nutriNova, int pro_additif, int pro_marque, int pro_categ, int pro_magasin, int pro_paysvente, String pro_listeingredient, int pro_conditionnement, int pro_certification, int pro_origineingredient, int pro_lieuxfabrication, String pro_codeemballage, String pro_lienpageweb) {
         this.pro_id = pro_id;
         this.pro_libelle = pro_libelle;
         this.pro_quantite = pro_quantite;
@@ -38,6 +41,8 @@ public class Produit {
         this.pro_codeemballage = pro_codeemballage;
         this.pro_lienpageweb = pro_lienpageweb;
         this.pro_additif = pro_additif;
+        this.pro_nova = pro_nova;
+        this.pro_nutriNova = pro_nutriNova;
     }
 
     //getters et setters
@@ -161,5 +166,24 @@ public class Produit {
     public void setPro_additif(int pro_additif) {
         this.pro_additif = pro_additif;
     }
+
+
+    public int getPro_nova() {
+        return pro_nova;
+    }
+
+    public void setPro_nova(int pro_nova) {
+        this.pro_nova = pro_nova;
+    }
+
+    public int getPro_nutriNova() {
+        return pro_nutriNova;
+    }
+
+    public void setPro_nutriNova(int pro_nutriNova) {
+        this.pro_nutriNova = pro_nutriNova;
+    }
+
+
 
 }

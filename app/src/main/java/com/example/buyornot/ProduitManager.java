@@ -26,6 +26,9 @@ public class ProduitManager {
     public static final String KEY_CODEEMBALLAGE_PRODUIT="pro_codeemballage";
     public static final String KEY_LIEUXFABRICATION_PRODUIT="pro_lieuxfabrication";
     public static final String KEY_LIENPAGEWEB_PRODUIT="pro_lienpageweb";
+    public static final String KEY_NOVA_PRODUIT="pro_nova";
+    public static final String KEY_NUTRINOVA_PRODUIT="pro_nutriNova";
+    public static final String KEY_ADDITIF_PRODUIT="pro_additif";
 
     public static final String CREATE_TABLE_PRODUIT = "CREATE TABLE"+TABLE_NAME+
             " (" +
@@ -71,6 +74,9 @@ public class ProduitManager {
         values.put(KEY_CODEEMBALLAGE_PRODUIT, produit.getPro_codeemballage());
         values.put(KEY_LIEUXFABRICATION_PRODUIT, produit.getPro_lieuxfabrication());
         values.put(KEY_LIENPAGEWEB_PRODUIT, produit.getPro_lienpageweb());
+        values.put(KEY_ADDITIF_PRODUIT, produit.getPro_additif());
+        values.put(KEY_NOVA_PRODUIT, produit.getPro_nova());
+        values.put(KEY_NUTRINOVA_PRODUIT, produit.getPro_nutriNova());
 
         // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
         return db.insert(TABLE_NAME, null, values);
@@ -94,6 +100,9 @@ public class ProduitManager {
         values.put(KEY_CODEEMBALLAGE_PRODUIT, produit.getPro_codeemballage());
         values.put(KEY_LIEUXFABRICATION_PRODUIT, produit.getPro_lieuxfabrication());
         values.put(KEY_LIENPAGEWEB_PRODUIT, produit.getPro_lienpageweb());
+        values.put(KEY_ADDITIF_PRODUIT, produit.getPro_additif());
+        values.put(KEY_NOVA_PRODUIT, produit.getPro_nova());
+        values.put(KEY_NUTRINOVA_PRODUIT, produit.getPro_nutriNova());
 
         String where = KEY_ID_PRODUIT+" = ?";
         String[] whereArgs = {produit.getPro_id()+""};
@@ -127,7 +136,7 @@ public class ProduitManager {
     public Produit getProduit(int id) {
         // Retourne l'produit dont l'id est passé en paramètre
 
-        Produit p = new Produit(1, "sucre", 40,0, 1,1, 1, null, 1, 1, 1, 1, "", "");
+        Produit p = new Produit(1, "sucre", 40,0, 1,1, 1, 1, 1, 1, "", 1, 1, 1, 1, "", "");
 
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID_PRODUIT + "=" + id, null);
 
@@ -146,6 +155,9 @@ public class ProduitManager {
             p.setPro_lieuxfabrication(c.getInt(c.getColumnIndex(KEY_LIEUXFABRICATION_PRODUIT)));
             p.setPro_codeemballage(c.getString(c.getColumnIndex(KEY_CODEEMBALLAGE_PRODUIT)));
             p.setPro_lienpageweb(c.getString(c.getColumnIndex(KEY_LIENPAGEWEB_PRODUIT)));
+            p.setPro_nutriNova(c.getInt(c.getColumnIndex(KEY_NUTRINOVA_PRODUIT)));
+            p.setPro_nova(c.getInt(c.getColumnIndex(KEY_NOVA_PRODUIT)));
+            p.setPro_additif(c.getInt(c.getColumnIndex(KEY_ADDITIF_PRODUIT)));
             c.close();
         }
         return p;
